@@ -1,3 +1,5 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+import { PropertyListComponent } from './features/properties/property-list/property-list.component';
+
+export const routes: Routes = [{ path: '', component: PropertyListComponent }];

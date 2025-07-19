@@ -1,28 +1,5 @@
-.starter {
+.main-content {
+  flex: 1 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  text-align: center;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: #f8f9fa;
-}
-
-h1 {
-  font-size: 3rem;
-  margin: 0 0 1rem;
-  color: #333;
-}
-
-p {
-  font-size: 1.2rem;
-  margin: 0.5rem 0;
-  color: #666;
-}
-
-.status {
-  font-size: 1rem;
-  color: #999;
-  margin-top: 2rem;
 }
