@@ -1,16 +1,12 @@
 import { Component, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
-export interface Property {
-  id: number;
-  title: string;
-  imageUrl: string;
-  price: number;
-  location: string;
-}
+import { Property } from '../property.data';
 
 @Component({
   selector: 'app-property-card',
   standalone: true,
+  imports: [RouterLink],
   templateUrl: './property-card.component.html',
   styleUrls: ['./property-card.component.scss'],
 })

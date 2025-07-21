@@ -1,0 +1,12 @@
+<div class="property-detail">
+  <h2>{{ property()?.title }}</h2>
+  <div class="property-detail-image-container">
+    <img
+      [src]="property()?.imageUrl"
+      [alt]="property()?.title"
+      class="property-detail-image"
+    />
+  </div>
+  <p>{{ property()?.location }}</p>
+  <p>{{ property()?.price }} € / night</p>
+</div>
