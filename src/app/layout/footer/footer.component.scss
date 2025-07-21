@@ -6,3 +6,12 @@
   gap: 0.5rem;
   border-top: 1px solid #ccc;
 }
+
+.footer-link {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
