@@ -9,7 +9,7 @@ This is my first project using Angular. My main goal is to get familiar with the
 - Angular
 - TypeScript
 - Sass (SCSS)
-- Karma for testing
+- Jasmine and Karma for testing
 
 ## 👩‍💻 Getting Started
 
