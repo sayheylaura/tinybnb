@@ -6,11 +6,11 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [RouterLink],
   template: `<footer class="footer">
-    <p>
+    <p data-testid="footer-copyright">
       &copy; {{ currentYear }} <a routerLink="/" class="footer-link">Tinybnb</a>
     </p>
     <div>|</div>
-    <p>Your home away from home</p>
+    <p data-testid="footer-description">Your home away from home</p>
   </footer>`,
   styleUrls: ['./footer.component.scss'],
 })
