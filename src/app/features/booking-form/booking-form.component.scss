@@ -19,11 +19,16 @@
 
   &:hover {
     background-color: darken($color: white, $amount: 5%);
+
+    .booking-form-back-link-icon {
+      transform: translateX(-5px);
+    }
   }
 }
 
-app-arrow-left-icon {
+.booking-form-back-link-icon {
   height: 24px;
+  transition: transform 0.2s ease-in-out;
 }
 
 .booking-form-back-link-text {

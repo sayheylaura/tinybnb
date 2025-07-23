@@ -3,7 +3,9 @@
     [routerLink]="['/property', property()?.id]"
     class="booking-form-back-link"
   >
-    <app-arrow-left-icon />
+    <div class="booking-form-back-link-icon">
+      <app-arrow-left-icon />
+    </div>
     <span class="booking-form-back-link-text">Back to property</span>
   </a>
   <h2 class="booking-form-title">Book {{ property()?.title }}</h2>
