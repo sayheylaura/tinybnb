@@ -1,5 +1,11 @@
 <div class="property-detail">
-  <h2>{{ property()?.title }}</h2>
+  <h2 class="property-detail-title">{{ property()?.title }}</h2>
+  <div class="property-detail-location-container">
+    <app-location-pin-icon />
+    <p class="property-detail-location" data-testid="property-location">
+      {{ property()?.location }}
+    </p>
+  </div>
   <div class="property-detail-image-container">
     <img
       [src]="property()?.imageUrl"
@@ -7,6 +13,21 @@
       class="property-detail-image"
     />
   </div>
-  <p data-testid="property-location">{{ property()?.location }}</p>
-  <p data-testid="property-price">{{ property()?.price }} € / night</p>
+  <div class="property-detail-content">
+    <div class="property-detail-description">
+      <h3 class="property-detail-description-title">About this place</h3>
+      <p class="property-detail-description-text">
+        {{ property()?.description }}
+      </p>
+    </div>
+    <div class="property-detail-booking">
+      <p class="property-detail-booking-price" data-testid="property-price">
+        <span class="property-detail-booking-price-value">
+          {{ property()?.price }} €
+        </span>
+        <span class="property-detail-booking-price-unit"> / night</span>
+      </p>
+      <a href="#" class="property-detail-booking-button">Book now</a>
+    </div>
+  </div>
 </div>

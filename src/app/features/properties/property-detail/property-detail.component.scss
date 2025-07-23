@@ -1,12 +1,25 @@
 .property-detail {
-  padding: 1.5rem;
+  padding: 0 2rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.property-detail-image-container {
-  width: 100%;
-  max-width: 600px;
+.property-detail-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.property-detail-location-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.property-detail-location {
+  font-size: 1.25rem;
+  margin: 0;
 }
 
 .property-detail-image {
@@ -15,4 +28,70 @@
   border-radius: 0.75rem;
   object-fit: cover;
   aspect-ratio: 4 / 3;
+}
+
+.property-detail-content {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+.property-detail-description {
+  border: 1px solid #e0e0e0;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+
+  @media (min-width: 768px) {
+    width: 70%;
+  }
+}
+
+.property-detail-description-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.property-detail-description-text {
+  margin: 0;
+}
+
+.property-detail-booking {
+  border: 1px solid #e0e0e0;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+
+  @media (min-width: 768px) {
+    width: 30%;
+  }
+}
+
+.property-detail-booking-price {
+  margin: 0;
+}
+
+.property-detail-booking-price-value {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.property-detail-booking-price-unit {
+  font-size: 1.25rem;
+  color: #666;
+}
+
+.property-detail-booking-button {
+  display: block;
+  text-align: center;
+  padding: 1rem;
+  background-color: rebeccapurple;
+  color: white;
+  text-decoration: none;
+  border-radius: 0.75rem;
+  margin-top: 1rem;
 }
