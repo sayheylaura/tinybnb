@@ -1,5 +1,5 @@
 @if (property()) {
-  <div class="property-detail">
+  <section class="property-detail">
     <h2 class="property-detail-title" data-testid="property-detail-title">
       {{ property()?.title }}
     </h2>
@@ -55,7 +55,7 @@
         >
       </div>
     </div>
-  </div>
+  </section>
 } @else {
   <div class="property-detail-not-found">
     <p data-testid="property-detail-not-found">Property not found</p>
