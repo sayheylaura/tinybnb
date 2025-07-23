@@ -8,9 +8,13 @@ import { RouterLink } from '@angular/router';
   template: `<footer class="footer">
     <p data-testid="footer-copyright">
       &copy; {{ currentYear }}
-      <a routerLink="/" class="footer-link" aria-label="Go to homepage"
-        >Tinybnb
-      </a>
+      <a
+        routerLink="/"
+        class="footer-link"
+        aria-label="Go to homepage"
+        data-testid="footer-link"
+        >Tinybnb</a
+      >
     </p>
     <div>|</div>
     <p data-testid="footer-description">Your home away from home</p>

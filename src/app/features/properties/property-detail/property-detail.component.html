@@ -1,9 +1,14 @@
 @if (property()) {
   <div class="property-detail">
-    <h2 class="property-detail-title">{{ property()?.title }}</h2>
+    <h2 class="property-detail-title" data-testid="property-detail-title">
+      {{ property()?.title }}
+    </h2>
     <div class="property-detail-location-container">
       <app-location-pin-icon />
-      <p class="property-detail-location" data-testid="property-location">
+      <p
+        class="property-detail-location"
+        data-testid="property-detail-location"
+      >
         {{ property()?.location }}
       </p>
     </div>
@@ -12,20 +17,29 @@
         [src]="property()?.imageUrl"
         [alt]="property()?.title"
         class="property-detail-image"
+        data-testid="property-detail-image"
       />
     </div>
     <div class="property-detail-content">
       <div class="property-detail-description">
-        <h3 class="property-detail-description-title">About this place</h3>
+        <h3
+          class="property-detail-description-title"
+          data-testid="property-detail-description-title"
+        >
+          About this place
+        </h3>
         <p
           class="property-detail-description-text"
-          data-testid="property-description"
+          data-testid="property-detail-description-text"
         >
           {{ property()?.description }}
         </p>
       </div>
       <div class="property-detail-booking">
-        <p class="property-detail-booking-price" data-testid="property-price">
+        <p
+          class="property-detail-booking-price"
+          data-testid="property-detail-booking-price"
+        >
           <span class="property-detail-booking-price-value">
             {{ property()?.price }} €
           </span>
@@ -42,6 +56,6 @@
   </div>
 } @else {
   <div class="property-detail-not-found">
-    <p data-testid="property-not-found">Property not found</p>
+    <p data-testid="property-detail-not-found">Property not found</p>
   </div>
 }

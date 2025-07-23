@@ -1,18 +1,23 @@
 <article class="property-card">
-  <a class="property-link" [routerLink]="['/property', property.id]">
+  <a
+    class="property-card-link"
+    [routerLink]="['/property', property.id]"
+    data-testid="property-card-link"
+  >
     <img
       [src]="property.imageUrl"
       [alt]="property.title"
-      class="property-image"
+      class="property-card-image"
+      data-testid="property-card-image"
     />
-    <div class="property-info">
-      <h3 class="property-title">{{ property.title }}</h3>
-
-      <p class="property-location" data-testid="property-location">
+    <div class="property-card-info">
+      <h3 class="property-card-title" data-testid="property-card-title">
+        {{ property.title }}
+      </h3>
+      <p class="property-card-location" data-testid="property-card-location">
         {{ property.location }}
       </p>
-
-      <p class="property-price" data-testid="property-price">
+      <p class="property-card-price" data-testid="property-card-price">
         {{ property.price }} €
       </p>
     </div>

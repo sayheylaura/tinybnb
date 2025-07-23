@@ -37,7 +37,7 @@ describe('FooterComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    const link = compiled.querySelector('a');
+    const link = compiled.querySelector('[data-testid="footer-link"]');
     link?.click();
     await fixture.whenStable();
 
@@ -48,7 +48,7 @@ describe('FooterComponent', () => {
     const fixture = TestBed.createComponent(FooterComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    const link = compiled.querySelector('a');
+    const link = compiled.querySelector('[data-testid="footer-link"]');
 
     expect(link?.getAttribute('aria-label')).toBe('Go to homepage');
   });

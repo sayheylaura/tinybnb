@@ -7,9 +7,13 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink],
   template: `<header class="header">
     <h1 class="header-title">
-      <a routerLink="/" class="header-title-link" aria-label="Go to homepage">
-        tinybnb
-      </a>
+      <a
+        routerLink="/"
+        class="header-title-link"
+        aria-label="Go to homepage"
+        data-testid="header-title-link"
+        >tinybnb</a
+      >
     </h1>
   </header>`,
   styleUrls: ['./header.component.scss'],

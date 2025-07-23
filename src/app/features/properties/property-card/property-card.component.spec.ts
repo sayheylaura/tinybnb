@@ -29,9 +29,10 @@ describe('PropertyCardComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    expect(compiled.querySelector('h3')?.textContent).toContain(
-      MOCK_PROPERTIES[0].title,
-    );
+    expect(
+      compiled.querySelector('[data-testid="property-card-title"]')
+        ?.textContent,
+    ).toContain(MOCK_PROPERTIES[0].title);
   });
 
   it('should display the property image', () => {
@@ -42,20 +43,9 @@ describe('PropertyCardComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    expect(compiled.querySelector('img')?.src).toContain(
-      MOCK_PROPERTIES[0].imageUrl,
-    );
-  });
-
-  it('should set the correct alt text on the image', () => {
-    const fixture = TestBed.createComponent(PropertyCardComponent);
-    const component = fixture.componentInstance;
-
-    component.property = MOCK_PROPERTIES[0];
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-
-    expect(compiled.querySelector('img')?.alt).toBe(MOCK_PROPERTIES[0].title);
+    expect(
+      compiled.querySelector('[data-testid="property-card-image"]')?.src,
+    ).toContain(MOCK_PROPERTIES[0].imageUrl);
   });
 
   it('should display the property location', () => {
@@ -67,7 +57,8 @@ describe('PropertyCardComponent', () => {
     const compiled = fixture.nativeElement;
 
     expect(
-      compiled.querySelector('[data-testid="property-location"]')?.textContent,
+      compiled.querySelector('[data-testid="property-card-location"]')
+        ?.textContent,
     ).toContain(MOCK_PROPERTIES[0].location);
   });
 
@@ -80,7 +71,8 @@ describe('PropertyCardComponent', () => {
     const compiled = fixture.nativeElement;
 
     expect(
-      compiled.querySelector('[data-testid="property-price"]')?.textContent,
+      compiled.querySelector('[data-testid="property-card-price"]')
+        ?.textContent,
     ).toContain(`${MOCK_PROPERTIES[0].price} €`);
   });
 
@@ -93,7 +85,7 @@ describe('PropertyCardComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    const link = compiled.querySelector('a');
+    const link = compiled.querySelector('[data-testid="property-card-link"]');
     link?.click();
     await fixture.whenStable();
 

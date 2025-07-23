@@ -25,16 +25,17 @@ describe('HeaderComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    expect(compiled.querySelector('a')?.textContent).toContain('tinybnb');
+    expect(
+      compiled.querySelector('[data-testid="header-title-link"]')?.textContent,
+    ).toContain('tinybnb');
   });
 
   it('should navigate to the home page when the title is clicked', async () => {
     const location = TestBed.inject(Location);
     const fixture = TestBed.createComponent(HeaderComponent);
-    fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    const link = compiled.querySelector('a');
+    const link = compiled.querySelector('[data-testid="header-title-link"]');
     link?.click();
     await fixture.whenStable();
 
@@ -45,7 +46,7 @@ describe('HeaderComponent', () => {
     const fixture = TestBed.createComponent(HeaderComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    const link = compiled.querySelector('a');
+    const link = compiled.querySelector('[data-testid="header-title-link"]');
 
     expect(link?.getAttribute('aria-label')).toBe('Go to homepage');
   });

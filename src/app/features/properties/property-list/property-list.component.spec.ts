@@ -24,18 +24,19 @@ describe('PropertyListComponent', () => {
     const fixture = TestBed.createComponent(PropertyListComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-
-    expect(compiled.querySelector('h2')?.textContent).toContain(
-      'Find your perfect stay',
-    );
+    expect(
+      compiled.querySelector('[data-testid="property-list-title"]')
+        ?.textContent,
+    ).toContain('Find your perfect stay');
   });
 
   it('should render a card for each property', () => {
     const fixture = TestBed.createComponent(PropertyListComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    const cards = compiled.querySelectorAll('app-property-card');
-
+    const cards = compiled
+      .querySelector('[data-testid="property-list-grid"]')
+      .querySelectorAll('app-property-card');
     expect(cards.length).toBe(MOCK_PROPERTIES.length);
   });
 });

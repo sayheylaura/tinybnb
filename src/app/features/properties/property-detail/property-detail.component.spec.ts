@@ -35,9 +35,10 @@ describe('PropertyDetailComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    expect(compiled.querySelector('h2')?.textContent).toContain(
-      MOCK_PROPERTIES[0].title,
-    );
+    expect(
+      compiled.querySelector('[data-testid="property-detail-title"]')
+        ?.textContent,
+    ).toContain(MOCK_PROPERTIES[0].title);
   });
 
   it('should display the location pin icon', () => {
@@ -54,7 +55,8 @@ describe('PropertyDetailComponent', () => {
     const compiled = fixture.nativeElement;
 
     expect(
-      compiled.querySelector('[data-testid="property-location"]')?.textContent,
+      compiled.querySelector('[data-testid="property-detail-location"]')
+        ?.textContent,
     ).toContain(MOCK_PROPERTIES[0].location);
   });
 
@@ -63,9 +65,9 @@ describe('PropertyDetailComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    expect(compiled.querySelector('img')?.src).toContain(
-      MOCK_PROPERTIES[0].imageUrl,
-    );
+    expect(
+      compiled.querySelector('[data-testid="property-detail-image"]')?.src,
+    ).toContain(MOCK_PROPERTIES[0].imageUrl);
   });
 
   it('should set the correct alt text on the image', () => {
@@ -73,7 +75,9 @@ describe('PropertyDetailComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    expect(compiled.querySelector('img')?.alt).toBe(MOCK_PROPERTIES[0].title);
+    expect(
+      compiled.querySelector('[data-testid="property-detail-image"]')?.alt,
+    ).toBe(MOCK_PROPERTIES[0].title);
   });
 
   it('should display the property description', () => {
@@ -82,7 +86,7 @@ describe('PropertyDetailComponent', () => {
     const compiled = fixture.nativeElement;
 
     expect(
-      compiled.querySelector('[data-testid="property-description"]')
+      compiled.querySelector('[data-testid="property-detail-description-text"]')
         ?.textContent,
     ).toContain(MOCK_PROPERTIES[0].description);
   });
@@ -93,7 +97,8 @@ describe('PropertyDetailComponent', () => {
     const compiled = fixture.nativeElement;
 
     expect(
-      compiled.querySelector('[data-testid="property-price"]')?.textContent,
+      compiled.querySelector('[data-testid="property-detail-booking-price"]')
+        ?.textContent,
     ).toContain(`${MOCK_PROPERTIES[0].price} € / night`);
   });
 
@@ -134,7 +139,8 @@ describe('PropertyDetailComponent', () => {
     const compiled = fixture.nativeElement;
 
     expect(
-      compiled.querySelector('[data-testid="property-not-found"]')?.textContent,
+      compiled.querySelector('[data-testid="property-detail-not-found"]')
+        ?.textContent,
     ).toContain('Property not found');
   });
 });
