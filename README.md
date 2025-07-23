@@ -39,6 +39,29 @@ Open [http://localhost:4200](http://localhost:4200) in your browser.
 | pnpm lint   | Lints the codebase using ESLint                      |
 | pnpm format | Formats the codebase using Prettier                  |
 
+## 🙇‍♀️ Resources
+
+- [Tabler icons](https://tabler.io/icons)
+- [v0](https://v0.dev/) for design inspiration
+- [Cursor](https://cursor.com/) as code editor
+
+> How am I using Cursor?
+
+This is the first time I try out Cursor as a code editor, after using VS Code exclusively for many years. I genuinely think AI is **_a tool_**, not a replacement for my knowledge or problem-solving skills.
+
+Since this is my first Angular project, I've mainly used Cursor's agent to ask questions and get feedback to deepen my learning, as well as to handle very repetitive tasks. I have found it more useful than just using ** _insert your AI tool of choice_ ** because it has access to the whole project as context.
+
+## 🗺️ Roadmap
+
+There are still many things I didn't have time to implement, even if I know they're important. Mainly:
+
+- Loading and emtpy states
+- Error handling
+
+Apart from that, one of my next career goals is learning backend development to become a fullstack engineer, so at some point:
+
+- Implement backend: set up a database and an API endpoint to serve property data
+
 ## ✨ Feedback & Suggestions
 
 If you have any suggestions/feedback or find any bugs, feel free to open an issue!
