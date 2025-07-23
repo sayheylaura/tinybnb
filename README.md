@@ -17,7 +17,7 @@ This is my first project using Angular. My main goal is to get familiar with the
 - [v0](https://v0.dev/) for design inspiration
 - [Cursor](https://cursor.com/) as code editor
 
-> How am I using Cursor?
+> Why and how am I using Cursor?
 
 This is the first time I try out Cursor as a code editor, after using VS Code exclusively for many years. I genuinely think AI is **_just another tool_**, not a replacement for my knowledge or problem-solving skills.
 
