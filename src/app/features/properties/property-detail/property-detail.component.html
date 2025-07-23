@@ -27,7 +27,11 @@
         </span>
         <span class="property-detail-booking-price-unit"> / night</span>
       </p>
-      <a href="#" class="property-detail-booking-button">Book now</a>
+      <a
+        [routerLink]="['/property', property()?.id, 'book']"
+        class="property-detail-booking-button"
+        >Book now</a
+      >
     </div>
   </div>
 </div>

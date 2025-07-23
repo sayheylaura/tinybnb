@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 import { LocationPinIconComponent } from '../../../../assets/icons/location-pin.icon';
 import { MOCK_PROPERTIES, Property } from '../property.data';
@@ -7,7 +7,7 @@ import { MOCK_PROPERTIES, Property } from '../property.data';
 @Component({
   selector: 'app-property-detail',
   standalone: true,
-  imports: [LocationPinIconComponent],
+  imports: [LocationPinIconComponent, RouterLink],
   templateUrl: './property-detail.component.html',
   styleUrls: ['./property-detail.component.scss'],
 })
