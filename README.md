@@ -6,10 +6,10 @@ This is my first project using Angular. My main goal is to get familiar with the
 
 ## 💥 Tech Stack
 
-- Angular
-- TypeScript
-- Sass (SCSS)
-- Jasmine and Karma for testing
+- [Angular](https://angular.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Sass (SCSS)](https://sass-lang.com/)
+- [Jasmine](https://jasmine.github.io/) and [Karma](https://karma-runner.github.io/latest/index.html) for testing
 
 ## 🙇‍♀️ Other resources
 
@@ -19,7 +19,7 @@ This is my first project using Angular. My main goal is to get familiar with the
 
 > How am I using Cursor?
 
-This is the first time I try out Cursor as a code editor, after using VS Code exclusively for many years. I genuinely think AI is **_another tool_**, not a replacement for my knowledge or problem-solving skills.
+This is the first time I try out Cursor as a code editor, after using VS Code exclusively for many years. I genuinely think AI is **_just another tool_**, not a replacement for my knowledge or problem-solving skills.
 
 Since this is my first Angular project, I've mainly used Cursor's agent to ask questions and get feedback to deepen my learning, as well as to handle very repetitive tasks. I have found it more useful than just using ** _insert your AI tool of choice_ ** because it has access to the whole project as context.
 
