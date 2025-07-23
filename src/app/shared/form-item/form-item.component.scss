@@ -1,0 +1,20 @@
+.form-item-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.form-item-label {
+  font-size: 1rem;
+}
+
+.form-item-input {
+  padding: 0.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.25rem;
+
+  &:focus {
+    outline: 2px solid rebeccapurple;
+    outline-offset: 2px;
+  }
+}

@@ -17,78 +17,14 @@
       class="booking-form-form"
       (ngSubmit)="onSubmit()"
     >
-      <div class="booking-form-form-row">
-        <label for="firstName" class="booking-form-label">First Name</label>
-        <input
-          id="firstName"
-          formControlName="firstName"
-          type="text"
-          class="booking-form-input"
+      @for (field of bookingFormFields; track field.id) {
+        <app-form-item-component
+          [id]="field.id"
+          [type]="field.type"
+          [label]="field.label"
+          [control]="getControl(field.id)"
         />
-      </div>
-      <div class="booking-form-form-row">
-        <label for="lastName" class="booking-form-label">Last Name</label>
-        <input
-          id="lastName"
-          formControlName="lastName"
-          type="text"
-          class="booking-form-input"
-        />
-      </div>
-      <div class="booking-form-form-row">
-        <label for="email" class="booking-form-label">Email</label>
-        <input
-          id="email"
-          formControlName="email"
-          type="email"
-          class="booking-form-input"
-        />
-      </div>
-      <div class="booking-form-form-row">
-        <label for="phone" class="booking-form-label">Phone</label>
-        <input
-          id="phone"
-          formControlName="phone"
-          type="tel"
-          class="booking-form-input"
-        />
-      </div>
-      <div class="booking-form-form-row">
-        <label for="address" class="booking-form-label">Address</label>
-        <input
-          id="address"
-          formControlName="address"
-          type="text"
-          class="booking-form-input"
-        />
-      </div>
-      <div class="booking-form-form-row">
-        <label for="city" class="booking-form-label">City</label>
-        <input
-          id="city"
-          formControlName="city"
-          type="text"
-          class="booking-form-input"
-        />
-      </div>
-      <div class="booking-form-form-row">
-        <label for="zip" class="booking-form-label">Zip</label>
-        <input
-          id="zip"
-          formControlName="zip"
-          type="text"
-          class="booking-form-input"
-        />
-      </div>
-      <div class="booking-form-form-row">
-        <label for="country" class="booking-form-label">Country</label>
-        <input
-          id="country"
-          formControlName="country"
-          type="text"
-          class="booking-form-input"
-        />
-      </div>
+      }
       <button type="submit" class="booking-form-button">Book</button>
     </form>
   </div>
