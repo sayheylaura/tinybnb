@@ -100,3 +100,10 @@
     background-color: lighten($color: rebeccapurple, $amount: 10%);
   }
 }
+
+.property-detail-not-found {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}

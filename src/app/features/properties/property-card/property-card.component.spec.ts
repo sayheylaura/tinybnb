@@ -47,6 +47,17 @@ describe('PropertyCardComponent', () => {
     );
   });
 
+  it('should set the correct alt text on the image', () => {
+    const fixture = TestBed.createComponent(PropertyCardComponent);
+    const component = fixture.componentInstance;
+
+    component.property = MOCK_PROPERTIES[0];
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+
+    expect(compiled.querySelector('img')?.alt).toBe(MOCK_PROPERTIES[0].title);
+  });
+
   it('should display the property location', () => {
     const fixture = TestBed.createComponent(PropertyCardComponent);
     const component = fixture.componentInstance;
