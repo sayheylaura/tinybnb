@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -7,86 +7,69 @@ import { MOCK_PROPERTIES } from '../property.data';
 import { PropertyCardComponent } from './property-card.component';
 
 describe('PropertyCardComponent', () => {
+  let component: PropertyCardComponent;
+  let fixture: ComponentFixture<PropertyCardComponent>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [PropertyCardComponent],
       providers: [provideRouter(routes)],
     }).compileComponents();
+
+    fixture = TestBed.createComponent(PropertyCardComponent);
+    component = fixture.componentInstance;
+    component.property = MOCK_PROPERTIES[0];
+    fixture.detectChanges();
   });
 
   it('should create the component', () => {
-    const fixture = TestBed.createComponent(PropertyCardComponent);
-    const component = fixture.componentInstance;
-
     expect(component).toBeTruthy();
   });
 
   it('should display the property title', () => {
-    const fixture = TestBed.createComponent(PropertyCardComponent);
-    const component = fixture.componentInstance;
-
-    component.property = MOCK_PROPERTIES[0];
-    fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    expect(
-      compiled.querySelector('[data-testid="property-card-title"]')
-        ?.textContent,
-    ).toContain(MOCK_PROPERTIES[0].title);
+    const title = compiled.querySelector('[data-testid="property-card-title"]');
+
+    expect(title?.textContent.trim()).toBe(MOCK_PROPERTIES[0].title);
   });
 
   it('should display the property image', () => {
-    const fixture = TestBed.createComponent(PropertyCardComponent);
-    const component = fixture.componentInstance;
-
-    component.property = MOCK_PROPERTIES[0];
-    fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    expect(
-      compiled.querySelector('[data-testid="property-card-image"]')?.src,
-    ).toContain(MOCK_PROPERTIES[0].imageUrl);
+    const image = compiled.querySelector('[data-testid="property-card-image"]');
+
+    expect(image?.src).toBe(MOCK_PROPERTIES[0].imageUrl);
   });
 
   it('should display the property location', () => {
-    const fixture = TestBed.createComponent(PropertyCardComponent);
-    const component = fixture.componentInstance;
-
-    component.property = MOCK_PROPERTIES[0];
-    fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    expect(
-      compiled.querySelector('[data-testid="property-card-location"]')
-        ?.textContent,
-    ).toContain(MOCK_PROPERTIES[0].location);
+    const location = compiled.querySelector(
+      '[data-testid="property-card-location"]',
+    );
+
+    expect(location?.textContent.trim()).toBe(MOCK_PROPERTIES[0].location);
   });
 
   it('should display the property price', () => {
-    const fixture = TestBed.createComponent(PropertyCardComponent);
-    const component = fixture.componentInstance;
-
-    component.property = MOCK_PROPERTIES[0];
-    fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    expect(
-      compiled.querySelector('[data-testid="property-card-price"]')
-        ?.textContent,
-    ).toContain(`${MOCK_PROPERTIES[0].price} €`);
+    const price = compiled.querySelector('[data-testid="property-card-price"]');
+
+    expect(price?.textContent.trim()).toBe(
+      `${MOCK_PROPERTIES[0].price} € / night`,
+    );
   });
 
   it('should navigate to the property detail page when clicked', async () => {
     const location = TestBed.inject(Location);
-    const fixture = TestBed.createComponent(PropertyCardComponent);
 
-    const component = fixture.componentInstance;
-    component.property = MOCK_PROPERTIES[0];
-    fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
     const link = compiled.querySelector('[data-testid="property-card-link"]');
     link?.click();
+
     await fixture.whenStable();
 
     expect(location.path()).toBe(MOCK_PROPERTIES[0].url);
