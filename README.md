@@ -47,7 +47,7 @@ Open [http://localhost:4200](http://localhost:4200) in your browser.
 | ----------- | ---------------------------------------------------- |
 | pnpm start  | Runs the app in development mode at `localhost:4200` |
 | pnpm build  | Builds the app for production to the `dist/` folder  |
-| pnpm test   | Runs unit tests using Karma                          |
+| pnpm test   | Runs unit tests using Jasmine and Karma              |
 | pnpm lint   | Lints the codebase using ESLint                      |
 | pnpm format | Formats the codebase using Prettier                  |
 
