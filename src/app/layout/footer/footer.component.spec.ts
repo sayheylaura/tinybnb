@@ -26,9 +26,11 @@ describe('FooterComponent', () => {
     const compiled = fixture.nativeElement;
     const currentYear = new Date().getFullYear();
 
-    expect(
-      compiled.querySelector('[data-testid="footer-copyright"]')?.textContent,
-    ).toContain(`© ${currentYear} Tinybnb`);
+    const copyright = compiled.querySelector(
+      '[data-testid="footer-copyright"]',
+    );
+
+    expect(copyright?.textContent.trim()).toBe(`© ${currentYear} Tinybnb`);
   });
 
   it('should navigate to the home page when the copyright text is clicked', async () => {
@@ -48,6 +50,7 @@ describe('FooterComponent', () => {
     const fixture = TestBed.createComponent(FooterComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
+
     const link = compiled.querySelector('[data-testid="footer-link"]');
 
     expect(link?.getAttribute('aria-label')).toBe('Go to homepage');
@@ -58,8 +61,18 @@ describe('FooterComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    expect(
-      compiled.querySelector('[data-testid="footer-description"]')?.textContent,
-    ).toContain('Your home away from home');
+    const description = compiled.querySelector(
+      '[data-testid="footer-description"]',
+    );
+
+    expect(description?.textContent.trim()).toBe('Your home away from home');
+  });
+
+  it('should display a github icon', () => {
+    const fixture = TestBed.createComponent(FooterComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+
+    expect(compiled.querySelector('app-github-icon')).toBeTruthy();
   });
 });

@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+import { GitHubIconComponent } from '../../../assets/icons/github.icon';
+
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, GitHubIconComponent],
   template: `<footer class="footer">
     <p data-testid="footer-copyright">
       &copy; {{ currentYear }}
@@ -16,8 +18,18 @@ import { RouterLink } from '@angular/router';
         >Tinybnb</a
       >
     </p>
-    <div>|</div>
+    <div class="footer-divider">|</div>
     <p data-testid="footer-description">Your home away from home</p>
+    <div class="footer-divider">|</div>
+    <div class="footer-social-links">
+      <a
+        href="https://github.com/sayheylaura/tinybnb"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <app-github-icon />
+      </a>
+    </div>
   </footer>`,
   styleUrls: ['./footer.component.scss'],
 })
