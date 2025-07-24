@@ -1,5 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { Location } from '@angular/common';
 
+import { routes } from '../../app.routes';
+import { MOCK_PROPERTIES } from '../properties/property.data';
 import { BookingFormComponent } from './booking-form.component';
 import { bookingFormFields } from './booking-form.component';
 
@@ -10,19 +14,67 @@ describe('BookingFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [BookingFormComponent],
+      providers: [provideRouter(routes)],
     }).compileComponents();
 
     fixture = TestBed.createComponent(BookingFormComponent);
     component = fixture.componentInstance;
-
-    fixture.detectChanges();
+    component.property.set(MOCK_PROPERTIES[0]);
   });
 
   it('should create the component', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should navigate to the property page when the back link is clicked', async () => {
+    const location = TestBed.inject(Location);
+    const compiled = fixture.nativeElement;
+    fixture.detectChanges();
+
+    const link = compiled.querySelector(
+      '[data-testid="booking-form-back-link"]',
+    );
+    link?.click();
+    await fixture.whenStable();
+
+    fixture.detectChanges();
+
+    expect(location.path()).toBe(MOCK_PROPERTIES[0].url);
+  });
+
+  it('should display the arrow left icon', () => {
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+
+    const icon = compiled.querySelector('app-arrow-left-icon');
+
+    expect(icon).toBeTruthy();
+  });
+
+  it('should display the property title', () => {
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+
+    const title = compiled.querySelector('[data-testid="booking-form-title"]');
+
+    expect(title.textContent.trim()).toBe(`Book ${MOCK_PROPERTIES[0].title}`);
+  });
+
+  it('should display the property location and price', () => {
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+
+    const details = compiled.querySelector(
+      '[data-testid="booking-form-details"]',
+    );
+
+    expect(details.textContent.trim()).toBe(
+      `${MOCK_PROPERTIES[0].location} · ${MOCK_PROPERTIES[0].price} € / night`,
+    );
+  });
+
   it('should display all form fields', () => {
+    fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
     const labelElements: Element[] = Array.from(
@@ -34,9 +86,12 @@ describe('BookingFormComponent', () => {
   });
 
   it('should reset the form on submit', () => {
+    fixture.detectChanges();
     component.bookingForm.get('firstName')?.setValue('Test');
 
-    const form = fixture.nativeElement.querySelector('form');
+    const form = fixture.nativeElement.querySelector(
+      '[data-testid="booking-form-form"]',
+    );
     form.dispatchEvent(new Event('submit'));
 
     expect(component.bookingForm.get('firstName')?.value).toBe('');

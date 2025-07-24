@@ -2,14 +2,17 @@
   <a
     [routerLink]="['/property', property()?.id]"
     class="booking-form-back-link"
+    data-testid="booking-form-back-link"
   >
     <div class="booking-form-back-link-icon">
       <app-arrow-left-icon />
     </div>
     <span class="booking-form-back-link-text">Back to property</span>
   </a>
-  <h2 class="booking-form-title">Book {{ property()?.title }}</h2>
-  <p class="booking-form-price">
+  <h2 class="booking-form-title" data-testid="booking-form-title">
+    Book {{ property()?.title }}
+  </h2>
+  <p class="booking-form-details" data-testid="booking-form-details">
     {{ property()?.location }} · {{ property()?.price }} € / night
   </p>
   <div class="booking-form-content">
@@ -17,6 +20,7 @@
     <form
       [formGroup]="bookingForm"
       class="booking-form-form"
+      data-testid="booking-form-form"
       (ngSubmit)="onSubmit()"
     >
       @for (field of bookingFormFields; track field.id) {

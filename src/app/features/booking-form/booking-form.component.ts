@@ -95,6 +95,15 @@ export class BookingFormComponent {
 
   onSubmit() {
     console.log(this.bookingForm.value);
-    this.bookingForm.reset();
+    this.bookingForm.reset({
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      address: '',
+      city: '',
+      zip: '',
+      country: '',
+    });
   }
 }
