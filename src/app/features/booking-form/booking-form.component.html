@@ -19,9 +19,9 @@
     <h3 class="booking-form-content-title">Complete your booking</h3>
     <form
       [formGroup]="bookingForm"
+      (ngSubmit)="onSubmit()"
       class="booking-form-form"
       data-testid="booking-form-form"
-      (ngSubmit)="onSubmit()"
     >
       @for (field of bookingFormFields; track field.id) {
         <app-form-item-component
@@ -31,7 +31,14 @@
           [control]="getControl(field.id)"
         />
       }
-      <button type="submit" class="booking-form-button">Book</button>
+      <button
+        type="submit"
+        [disabled]="bookingForm.invalid"
+        class="booking-form-button"
+        data-testid="booking-form-button"
+      >
+        Book
+      </button>
     </form>
   </div>
 </section>

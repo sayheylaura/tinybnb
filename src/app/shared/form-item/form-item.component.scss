@@ -17,4 +17,14 @@
     outline: 2px solid rebeccapurple;
     outline-offset: 2px;
   }
+
+  &.invalid {
+    border-color: red;
+  }
+}
+
+.form-item-error {
+  color: red;
+  font-size: 0.8rem;
+  margin: 0.25rem 0 0;
 }

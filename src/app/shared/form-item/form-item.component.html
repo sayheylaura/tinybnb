@@ -7,6 +7,26 @@
     [type]="type"
     [formControl]="control"
     class="form-item-input"
+    [class.invalid]="control.invalid && (control.dirty || control.touched)"
+    [attr.aria-invalid]="control.invalid && (control.dirty || control.touched)"
+    [attr.aria-describedby]="
+      control.invalid && (control.dirty || control.touched)
+        ? 'form-item-error'
+        : null
+    "
     data-testid="form-item-input"
   />
+  @if (control.invalid && (control.dirty || control.touched)) {
+    <p class="form-item-error" data-testid="form-item-error">
+      @if (control.errors?.['required']) {
+        {{ label }} is required.
+      }
+      @if (control.errors?.['email']) {
+        Enter a valid email address.
+      }
+      @if (control.errors?.['pattern']) {
+        Phone must contain only numbers.
+      }
+    </p>
+  }
 </div>

@@ -85,9 +85,43 @@ describe('BookingFormComponent', () => {
     expect(labels).toEqual(bookingFormFields.map((field) => field.label));
   });
 
+  it('should disable the submit button when the form is invalid', () => {
+    fixture.detectChanges();
+
+    const button = fixture.nativeElement.querySelector(
+      '[data-testid="booking-form-button"]',
+    );
+    expect(button.disabled).toBe(true);
+  });
+
+  it('should enable the submit button when the form is valid', () => {
+    component.bookingForm.get('firstName')?.setValue('Test');
+    component.bookingForm.get('lastName')?.setValue('Test');
+    component.bookingForm.get('email')?.setValue('test@test.com');
+    component.bookingForm.get('phone')?.setValue('1234567890');
+    component.bookingForm.get('address')?.setValue('Test');
+    component.bookingForm.get('city')?.setValue('Test');
+    component.bookingForm.get('zip')?.setValue('12345');
+    component.bookingForm.get('country')?.setValue('Test');
+
+    const submitButton = fixture.nativeElement.querySelector(
+      '[data-testid="booking-form-button"]',
+    );
+
+    expect(submitButton.disabled).toBe(false);
+  });
+
   it('should reset the form on submit', () => {
     fixture.detectChanges();
+
     component.bookingForm.get('firstName')?.setValue('Test');
+    component.bookingForm.get('lastName')?.setValue('Test');
+    component.bookingForm.get('email')?.setValue('test@test.com');
+    component.bookingForm.get('phone')?.setValue('1234567890');
+    component.bookingForm.get('address')?.setValue('Test');
+    component.bookingForm.get('city')?.setValue('Test');
+    component.bookingForm.get('zip')?.setValue('12345');
+    component.bookingForm.get('country')?.setValue('Test');
 
     const form = fixture.nativeElement.querySelector(
       '[data-testid="booking-form-form"]',

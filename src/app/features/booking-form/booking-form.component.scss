@@ -81,4 +81,9 @@
   &:hover {
     background-color: lighten($color: rebeccapurple, $amount: 10%);
   }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }

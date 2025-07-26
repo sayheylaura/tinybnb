@@ -1,5 +1,10 @@
 import { Component, inject, signal } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
 import { ArrowLeftIconComponent } from '../../../assets/icons/arrow-left.icon';
@@ -71,14 +76,17 @@ export class BookingFormComponent {
   private route = inject(ActivatedRoute);
 
   bookingForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    email: new FormControl(''),
-    phone: new FormControl(''),
-    address: new FormControl(''),
-    city: new FormControl(''),
-    zip: new FormControl(''),
-    country: new FormControl(''),
+    firstName: new FormControl('', [Validators.required]),
+    lastName: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    phone: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^\d+$/),
+    ]),
+    address: new FormControl('', [Validators.required]),
+    city: new FormControl('', [Validators.required]),
+    zip: new FormControl('', [Validators.required]),
+    country: new FormControl('', [Validators.required]),
   });
 
   constructor() {
@@ -94,7 +102,7 @@ export class BookingFormComponent {
   }
 
   onSubmit() {
-    console.log(this.bookingForm.value);
+    console.log('onSubmit', this.bookingForm.value);
     this.bookingForm.reset({
       firstName: '',
       lastName: '',
