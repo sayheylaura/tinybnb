@@ -55,9 +55,9 @@ Open [http://localhost:4200](http://localhost:4200) in your browser.
 
 There are still many things I didn't have time to implement, even if I know they're important. Mainly:
 
+- [x] Form validation
 - [ ] Loading and emtpy states
 - [ ] Error handling
-- [ ] Form validation
 
 Apart from that, one of my next career goals is learning backend development to become a fullstack engineer, so at some point:
 
