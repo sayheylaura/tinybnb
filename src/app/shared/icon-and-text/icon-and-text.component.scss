@@ -1,0 +1,13 @@
+.icon-and-text-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+app-icon {
+  height: 24px;
+}
+
+.icon-and-text-text {
+  margin: 0;
+}

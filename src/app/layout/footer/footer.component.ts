@@ -27,7 +27,7 @@ import { GitHubIconComponent } from '../../../assets/icons/github.icon';
         target="_blank"
         rel="noopener noreferrer"
       >
-        <app-github-icon />
+        <app-github-icon color="rebeccapurple" />
       </a>
     </div>
   </footer>`,

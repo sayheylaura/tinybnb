@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-github-icon',
   standalone: true,
-  // update color implementation to avoid hardcoding the color if we reuse this icon in other components
   template: `
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11,7 +10,7 @@ import { Component } from '@angular/core';
       height="24"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="rebeccapurple"
+      [attr.stroke]="color"
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
@@ -24,4 +23,6 @@ import { Component } from '@angular/core';
     </svg>
   `,
 })
-export class GitHubIconComponent {}
+export class GitHubIconComponent {
+  @Input() color: string = 'currentColor';
+}

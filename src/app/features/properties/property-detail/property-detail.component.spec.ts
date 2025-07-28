@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Location } from '@angular/common';
 import { ActivatedRoute, provideRouter } from '@angular/router';
 import { of } from 'rxjs';
@@ -8,6 +8,9 @@ import { MOCK_PROPERTIES } from '../property.data';
 import { PropertyDetailComponent } from './property-detail.component';
 
 describe('PropertyDetailComponent', () => {
+  let component: PropertyDetailComponent;
+  let fixture: ComponentFixture<PropertyDetailComponent>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [PropertyDetailComponent],
@@ -21,101 +24,127 @@ describe('PropertyDetailComponent', () => {
         },
       ],
     }).compileComponents();
+
+    fixture = TestBed.createComponent(PropertyDetailComponent);
+    component = fixture.componentInstance;
+
+    fixture.detectChanges();
   });
 
   it('should create the component', () => {
-    const fixture = TestBed.createComponent(PropertyDetailComponent);
-    const component = fixture.componentInstance;
-
     expect(component).toBeTruthy();
   });
 
   it('should display the property title', () => {
-    const fixture = TestBed.createComponent(PropertyDetailComponent);
-    fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    expect(
-      compiled.querySelector('[data-testid="property-detail-title"]')
-        ?.textContent,
-    ).toContain(MOCK_PROPERTIES[0].title);
+    const title = compiled
+      .querySelector('[data-testid="property-detail-title"]')
+      ?.textContent.trim();
+
+    expect(title).toBe(MOCK_PROPERTIES[0].title);
   });
 
   it('should display the location pin icon', () => {
-    const fixture = TestBed.createComponent(PropertyDetailComponent);
-    fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    expect(compiled.querySelector('app-location-pin-icon')).toBeTruthy();
+    const locationPinIcon = compiled.querySelector('app-location-pin-icon');
+
+    expect(locationPinIcon).toBeTruthy();
   });
 
-  it('should display the property location', () => {
-    const fixture = TestBed.createComponent(PropertyDetailComponent);
-    fixture.detectChanges();
+  it('should display the star icon', () => {
     const compiled = fixture.nativeElement;
 
-    expect(
-      compiled.querySelector('[data-testid="property-detail-location"]')
-        ?.textContent,
-    ).toContain(MOCK_PROPERTIES[0].location);
+    const starIcon = compiled.querySelector('app-star-icon');
+
+    expect(starIcon).toBeTruthy();
+  });
+
+  it('should display the property data', () => {
+    const compiled = fixture.nativeElement;
+
+    const propertyData = compiled
+      .querySelector('[data-testid="property-detail-data-container"]')
+      ?.textContent.trim();
+
+    expect(propertyData).toBe(
+      `${MOCK_PROPERTIES[0].location}  ${MOCK_PROPERTIES[0].rating} (${MOCK_PROPERTIES[0].numberOfReviews} reviews)`,
+    );
   });
 
   it('should display the property image', () => {
-    const fixture = TestBed.createComponent(PropertyDetailComponent);
-    fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    expect(
-      compiled.querySelector('[data-testid="property-detail-image"]')?.src,
-    ).toContain(MOCK_PROPERTIES[0].imageUrl);
+    const image = compiled.querySelector(
+      '[data-testid="property-detail-image"]',
+    );
+
+    expect(image?.src).toBe(MOCK_PROPERTIES[0].imageUrl);
   });
 
   it('should set the correct alt text on the image', () => {
-    const fixture = TestBed.createComponent(PropertyDetailComponent);
-    fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    expect(
-      compiled.querySelector('[data-testid="property-detail-image"]')?.alt,
-    ).toBe(MOCK_PROPERTIES[0].title);
+    const image = compiled.querySelector(
+      '[data-testid="property-detail-image"]',
+    );
+
+    expect(image?.alt).toBe(MOCK_PROPERTIES[0].title);
   });
 
   it('should display the property description', () => {
-    const fixture = TestBed.createComponent(PropertyDetailComponent);
-    fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    expect(
-      compiled.querySelector('[data-testid="property-detail-description-text"]')
-        ?.textContent,
-    ).toContain(MOCK_PROPERTIES[0].description);
+    const description = compiled
+      .querySelector('[data-testid="property-detail-description-text"]')
+      ?.textContent.trim();
+
+    expect(description).toBe(MOCK_PROPERTIES[0].description);
+  });
+
+  it('should display the property amenities', () => {
+    const compiled = fixture.nativeElement;
+
+    const amenities = compiled.querySelectorAll(
+      '[data-testid="property-detail-amenity-item"]',
+    );
+
+    expect(amenities.length).toBe(MOCK_PROPERTIES[0].amenities.length);
   });
 
   it('should display the property price', () => {
-    const fixture = TestBed.createComponent(PropertyDetailComponent);
-    fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    expect(
-      compiled.querySelector('[data-testid="property-detail-booking-price"]')
-        ?.textContent,
-    ).toContain(`${MOCK_PROPERTIES[0].price} € / night`);
+    const price = compiled
+      .querySelector('[data-testid="property-detail-booking-price"]')
+      ?.textContent.trim();
+
+    expect(price).toBe(`${MOCK_PROPERTIES[0].price} € / night`);
   });
 
   it('should display the booking button', () => {
-    const fixture = TestBed.createComponent(PropertyDetailComponent);
-    fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    expect(
-      compiled.querySelector('[data-testid="property-detail-booking-button"]'),
-    ).toBeTruthy();
+    const bookingButton = compiled.querySelector(
+      '[data-testid="property-detail-booking-button"]',
+    );
+
+    expect(bookingButton?.textContent).toBe('Book now');
+  });
+
+  it('should display the property host', () => {
+    const compiled = fixture.nativeElement;
+
+    const host = compiled.querySelector(
+      '[data-testid="property-detail-booking-host"]',
+    );
+
+    expect(host?.textContent).toContain(`Hosted by ${MOCK_PROPERTIES[0].host}`);
   });
 
   it('should navigate to the booking page when the booking button is clicked', async () => {
     const location = TestBed.inject(Location);
-    const fixture = TestBed.createComponent(PropertyDetailComponent);
-    fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
     const link = compiled.querySelector(
@@ -126,21 +155,36 @@ describe('PropertyDetailComponent', () => {
 
     expect(location.path()).toBe('/property/1/book');
   });
+});
 
-  it('should display a message when the property is not found', () => {
-    TestBed.overrideProvider(ActivatedRoute, {
-      useValue: {
-        params: of({ id: '999' }),
-      },
-    });
+describe('PropertyDetailComponent > when the property is not found', () => {
+  let fixture: ComponentFixture<PropertyDetailComponent>;
 
-    const fixture = TestBed.createComponent(PropertyDetailComponent);
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [PropertyDetailComponent],
+      providers: [
+        provideRouter(routes),
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            params: of({ id: '999' }),
+          },
+        },
+      ],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(PropertyDetailComponent);
     fixture.detectChanges();
+  });
+
+  it('should display a message', () => {
     const compiled = fixture.nativeElement;
 
-    expect(
-      compiled.querySelector('[data-testid="property-detail-not-found"]')
-        ?.textContent,
-    ).toContain('Property not found');
+    const notFoundText = compiled.querySelector(
+      '[data-testid="property-detail-not-found"]',
+    )?.textContent;
+
+    expect(notFoundText).toContain('Property not found');
   });
 });

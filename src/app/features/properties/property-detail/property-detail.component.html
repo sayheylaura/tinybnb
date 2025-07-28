@@ -3,16 +3,20 @@
     <h2 class="property-detail-title" data-testid="property-detail-title">
       {{ property()?.title }}
     </h2>
-    <div class="property-detail-location-container">
-      <div class="property-detail-location-icon">
-        <app-location-pin-icon />
-      </div>
-      <p
-        class="property-detail-location"
-        data-testid="property-detail-location"
-      >
-        {{ property()?.location }}
-      </p>
+    <div
+      class="property-detail-data-container"
+      data-testid="property-detail-data-container"
+    >
+      <app-icon-and-text
+        [icon]="'location-pin'"
+        [text]="property()?.location || ''"
+      />
+      <app-icon-and-text
+        [icon]="'star'"
+        [text]="
+          `${property()?.rating} (${property()?.numberOfReviews} reviews)`
+        "
+      />
     </div>
     <div class="property-detail-image-container">
       <img
@@ -22,20 +26,38 @@
         data-testid="property-detail-image"
       />
     </div>
-    <div class="property-detail-content">
-      <div class="property-detail-description">
-        <h3
-          class="property-detail-description-title"
-          data-testid="property-detail-description-title"
-        >
-          About this place
-        </h3>
-        <p
-          class="property-detail-description-text"
-          data-testid="property-detail-description-text"
-        >
-          {{ property()?.description }}
-        </p>
+    <section class="property-detail-section-container">
+      <div class="property-detail-content">
+        <div class="property-detail-description">
+          <h3
+            class="property-detail-section-title"
+            data-testid="property-detail-description-title"
+          >
+            About this place
+          </h3>
+          <p
+            class="property-detail-description-text"
+            data-testid="property-detail-description-text"
+          >
+            {{ property()?.description }}
+          </p>
+        </div>
+        <div class="property-detail-amenities">
+          <h3 class="property-detail-section-title">Amenities</h3>
+          <ul class="property-detail-amenities-list">
+            @for (amenity of property()?.amenities; track amenity.id) {
+              <li
+                class="property-detail-amenity-item"
+                data-testid="property-detail-amenity-item"
+              >
+                <app-icon-and-text
+                  [icon]="amenity.icon"
+                  [text]="amenity.name"
+                />
+              </li>
+            }
+          </ul>
+        </div>
       </div>
       <div class="property-detail-booking">
         <p
@@ -53,8 +75,15 @@
           data-testid="property-detail-booking-button"
           >Book now</a
         >
+        <div class="divider"></div>
+        <p
+          class="property-detail-booking-host"
+          data-testid="property-detail-booking-host"
+        >
+          Hosted by {{ property()?.host }}
+        </p>
       </div>
-    </div>
+    </section>
   </section>
 } @else {
   <div class="property-detail-not-found">
