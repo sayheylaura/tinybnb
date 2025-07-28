@@ -7,18 +7,7 @@ import { PropertyCardComponent } from '../property-card/property-card.component'
   selector: 'app-property-list',
   standalone: true,
   imports: [PropertyCardComponent],
-  template: `
-    <section class="property-list">
-      <h2 class="property-list-title" data-testid="property-list-title">
-        Find your perfect stay
-      </h2>
-      <div class="property-list-grid" data-testid="property-list-grid">
-        @for (property of properties; track property.id) {
-          <app-property-card [property]="property"></app-property-card>
-        }
-      </div>
-    </section>
-  `,
+  templateUrl: './property-list.component.html',
   styleUrls: ['./property-list.component.scss'],
 })
 export class PropertyListComponent {
