@@ -26,6 +26,24 @@ describe('BookingFormComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should display the arrow left icon', () => {
+    const compiled = fixture.nativeElement;
+
+    const icon = compiled.querySelector('app-arrow-left-icon');
+
+    expect(icon).toBeTruthy();
+  });
+
+  it('should display the go back link with the correct text', () => {
+    const compiled = fixture.nativeElement;
+
+    const link = compiled.querySelector(
+      '[data-testid="booking-form-back-link"]',
+    );
+
+    expect(link.textContent.trim()).toBe('Back to property');
+  });
+
   it('should navigate to the property page when the back link is clicked', async () => {
     const location = TestBed.inject(Location);
     const compiled = fixture.nativeElement;
@@ -37,18 +55,7 @@ describe('BookingFormComponent', () => {
     link?.click();
     await fixture.whenStable();
 
-    fixture.detectChanges();
-
     expect(location.path()).toBe(MOCK_PROPERTIES[0].url);
-  });
-
-  it('should display the arrow left icon', () => {
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-
-    const icon = compiled.querySelector('app-arrow-left-icon');
-
-    expect(icon).toBeTruthy();
   });
 
   it('should display the property title', () => {
@@ -87,8 +94,9 @@ describe('BookingFormComponent', () => {
 
   it('should disable the submit button when the form is invalid', () => {
     fixture.detectChanges();
+    const compiled = fixture.nativeElement;
 
-    const button = fixture.nativeElement.querySelector(
+    const button = compiled.querySelector(
       '[data-testid="booking-form-button"]',
     );
     expect(button.disabled).toBe(true);
@@ -104,7 +112,9 @@ describe('BookingFormComponent', () => {
     component.bookingForm.get('zip')?.setValue('12345');
     component.bookingForm.get('country')?.setValue('Test');
 
-    const submitButton = fixture.nativeElement.querySelector(
+    const compiled = fixture.nativeElement;
+
+    const submitButton = compiled.querySelector(
       '[data-testid="booking-form-button"]',
     );
 
@@ -123,9 +133,9 @@ describe('BookingFormComponent', () => {
     component.bookingForm.get('zip')?.setValue('12345');
     component.bookingForm.get('country')?.setValue('Test');
 
-    const form = fixture.nativeElement.querySelector(
-      '[data-testid="booking-form-form"]',
-    );
+    const compiled = fixture.nativeElement;
+
+    const form = compiled.querySelector('[data-testid="booking-form-form"]');
     form.dispatchEvent(new Event('submit'));
 
     expect(component.bookingForm.get('firstName')?.value).toBe('');

@@ -30,17 +30,26 @@ describe('FormItem', () => {
   it('should display the label', () => {
     const compiled = fixture.nativeElement;
 
-    expect(
-      compiled.querySelector('[data-testid="form-item-label"]')?.textContent,
-    ).toContain('First Name');
+    const label = compiled.querySelector('[data-testid="form-item-label"]');
+
+    expect(label.textContent.trim()).toBe('First Name');
   });
 
   it('should display the input', () => {
     const compiled = fixture.nativeElement;
 
-    expect(
-      compiled.querySelector('[data-testid="form-item-input"]')?.value,
-    ).toBe('');
+    const input = compiled.querySelector('[data-testid="form-item-input"]');
+
+    expect(input.value).toBe('');
+  });
+
+  it('should associate the label with the input', () => {
+    const compiled = fixture.nativeElement;
+
+    const label = compiled.querySelector('[data-testid="form-item-label"]');
+    const input = compiled.querySelector('[data-testid="form-item-input"]');
+
+    expect(label.getAttribute('for')).toBe(input.getAttribute('id'));
   });
 
   it('should update the input value', () => {
@@ -48,17 +57,9 @@ describe('FormItem', () => {
 
     component.control.setValue('test');
 
-    expect(
-      compiled.querySelector('[data-testid="form-item-input"]')?.value,
-    ).toBe('test');
-  });
-
-  it('should associate the label with the input', () => {
-    const compiled = fixture.nativeElement;
-    const label = compiled.querySelector('[data-testid="form-item-label"]');
     const input = compiled.querySelector('[data-testid="form-item-input"]');
 
-    expect(label.getAttribute('for')).toBe(input.getAttribute('id'));
+    expect(input.value).toBe('test');
   });
 
   it('should show an error message when the input is required and empty', () => {
@@ -69,7 +70,9 @@ describe('FormItem', () => {
     component.control.markAsTouched();
     fixture.detectChanges();
 
-    const errorMessage = fixture.nativeElement.querySelector(
+    const compiled = fixture.nativeElement;
+
+    const errorMessage = compiled.querySelector(
       '[data-testid="form-item-error"]',
     );
 
@@ -88,7 +91,9 @@ describe('FormItem', () => {
     component.control.setValue('1234567890a');
     fixture.detectChanges();
 
-    const errorMessage = fixture.nativeElement.querySelector(
+    const compiled = fixture.nativeElement;
+
+    const errorMessage = compiled.querySelector(
       '[data-testid="form-item-error"]',
     );
 
@@ -109,7 +114,9 @@ describe('FormItem', () => {
     component.control.setValue('invalid-email');
     fixture.detectChanges();
 
-    const errorMessage = fixture.nativeElement.querySelector(
+    const compiled = fixture.nativeElement;
+
+    const errorMessage = compiled.querySelector(
       '[data-testid="form-item-error"]',
     );
 
@@ -122,7 +129,9 @@ describe('FormItem', () => {
     component.control.setValue('test@test.com');
     fixture.detectChanges();
 
-    const errorMessage = fixture.nativeElement.querySelector(
+    const compiled = fixture.nativeElement;
+
+    const errorMessage = compiled.querySelector(
       '[data-testid="form-item-error"]',
     );
 
@@ -133,9 +142,9 @@ describe('FormItem', () => {
     component.control.markAsTouched();
     fixture.detectChanges();
 
-    const input = fixture.nativeElement.querySelector(
-      '[data-testid="form-item-input"]',
-    );
+    const compiled = fixture.nativeElement;
+
+    const input = compiled.querySelector('[data-testid="form-item-input"]');
 
     expect(input.getAttribute('aria-invalid')).toBe('true');
   });

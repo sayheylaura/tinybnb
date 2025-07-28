@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -6,33 +6,34 @@ import { routes } from '../../app.routes';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
+  let fixture: ComponentFixture<HeaderComponent>;
+  let component: HeaderComponent;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HeaderComponent],
       providers: [provideRouter(routes)],
     }).compileComponents();
+
+    fixture = TestBed.createComponent(HeaderComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create the component', () => {
-    const fixture = TestBed.createComponent(HeaderComponent);
-    const component = fixture.componentInstance;
-
     expect(component).toBeTruthy();
   });
 
   it('should display the title', () => {
-    const fixture = TestBed.createComponent(HeaderComponent);
-    fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    expect(
-      compiled.querySelector('[data-testid="header-title-link"]')?.textContent,
-    ).toContain('tinybnb');
+    const title = compiled.querySelector('[data-testid="header-title-link"]');
+
+    expect(title.textContent.trim()).toBe('tinybnb');
   });
 
   it('should navigate to the home page when the title is clicked', async () => {
     const location = TestBed.inject(Location);
-    const fixture = TestBed.createComponent(HeaderComponent);
     const compiled = fixture.nativeElement;
 
     const link = compiled.querySelector('[data-testid="header-title-link"]');
@@ -43,11 +44,9 @@ describe('HeaderComponent', () => {
   });
 
   it('should have an aria-label on the title link', () => {
-    const fixture = TestBed.createComponent(HeaderComponent);
-    fixture.detectChanges();
     const compiled = fixture.nativeElement;
     const link = compiled.querySelector('[data-testid="header-title-link"]');
 
-    expect(link?.getAttribute('aria-label')).toBe('Go to homepage');
+    expect(link.getAttribute('aria-label')).toBe('Go to homepage');
   });
 });
