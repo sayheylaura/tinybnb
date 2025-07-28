@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-location-pin-icon',
+  selector: 'app-breakfast-icon',
   standalone: true,
   template: `
     <svg
@@ -14,16 +14,15 @@ import { Component, Input } from '@angular/core';
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
-      class="icon icon-tabler icons-tabler-outline icon-tabler-map-pin"
+      class="icon icon-tabler icons-tabler-outline icon-tabler-bread"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
       <path
-        d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"
+        d="M18 4a3 3 0 0 1 2 5.235v8.765a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-8.764a3 3 0 0 1 1.824 -5.231h12.176v-.005z"
       />
     </svg>
   `,
 })
-export class LocationPinIconComponent {
+export class BreakfastIconComponent {
   @Input() color: string = 'currentColor';
 }
