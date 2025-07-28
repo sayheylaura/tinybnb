@@ -6,7 +6,6 @@
   justify-content: center;
   gap: 0.5rem;
   border-top: 1px solid #e0e0e0;
-  font-size: 0.875rem;
 
   & p {
     margin: 0;
@@ -56,4 +55,8 @@
   &:hover {
     transform: rotate(12deg);
   }
+}
+
+.footer-description {
+  font-size: 0.875rem;
 }

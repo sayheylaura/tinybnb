@@ -30,7 +30,9 @@ import { GitHubIconComponent } from '../../../assets/icons/github.icon';
         </a>
       </div>
     </div>
-    <p data-testid="footer-description">Your home away from home</p>
+    <p class="footer-description" data-testid="footer-description">
+      Your home away from home
+    </p>
   </footer>`,
   styleUrls: ['./footer.component.scss'],
 })
